@@ -5,20 +5,23 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , http = require('http');
+  , path = require('path')
+  , http = require('http')
+  , models = {}
+  , application_root = __dirname;
 
 var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
-  app.set('views', __dirname + '/views');
+  app.set('views', path.join(application_root, '/views'));
   app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(path.join(application_root, '/public')));
 });
 
 app.configure('development', function(){
