@@ -3,27 +3,29 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , path = require('path')
-  , http = require('http')
-  , models = {}
-  , mongoose = require("mongoose")
-  , application_root = __dirname;
+var express         = require('express')
+  , routes          = require('./routes')
+  , path            = require('path')
+  , http            = require('http')
+  , models          = {}
+  , mongoose        = require("mongoose")
+  , connectAssets   = require("connect-assets")()
+  , applicationRoot = __dirname;
 
 mongoose.connect(process.env.MONGOHQ_URL || "mongodb://localhost/blogexpress");
 var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
-  app.set('views', path.join(application_root, '/views'));
+  app.set('views', path.join(applicationRoot, '/views'));
   app.set('view engine', 'jade');
   app.use(express.favicon());
   app.use(express.logger('dev'));
+  app.use(connectAssets);
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  app.use(express.static(path.join(application_root, '/public')));
+  app.use(express.static(path.join(applicationRoot, '/public')));
 });
 
 app.configure('development', function(){
