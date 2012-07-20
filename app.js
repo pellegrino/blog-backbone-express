@@ -11,7 +11,7 @@ var express = require('express')
   , mongoose = require("mongoose")
   , application_root = __dirname;
 
-mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/blogexpress");
+mongoose.connect(process.env.MONGOHQ_URL || "mongodb://localhost/blogexpress");
 var app = express();
 
 app.configure(function(){
