@@ -12,3 +12,4 @@ The server is mainly a REST webserver, leaving the client with most of the heavy
 * backbone 
 * connect-assets 
 * mongodb for persistence
+* html5 boilerplate
