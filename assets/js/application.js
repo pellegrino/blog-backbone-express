@@ -1,2 +1,3 @@
-//= require plugins 
+//= require backbone
+//= require plugins
 //= require script 
