@@ -8,10 +8,13 @@ var models = require(".././lib/models"),
 
 exports.index = function(req, res){
 
-  var posts = Post.fetch();
-
-  res.render('index', {
-    title: 'Backbone Blog Express',
-    posts: posts
+  Post.find(function(err, _posts) {
+    return res.render('index', {
+      title: 'Backbone Blog Express',
+      posts: _posts
+    });
   });
+
 };
+
+

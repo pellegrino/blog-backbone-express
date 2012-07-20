@@ -8,8 +8,10 @@ var express = require('express')
   , path = require('path')
   , http = require('http')
   , models = {}
+  , mongoose = require("mongoose")
   , application_root = __dirname;
 
+mongoose.connect(process.env.MONGO_URL || "mongodb://localhost/blogexpress");
 var app = express();
 
 app.configure(function(){

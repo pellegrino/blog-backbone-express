@@ -1,7 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  h2= posts.title
-  p Welcome to #{title}
+  hgroup 
+    h1= title
+    h2 Welcome to #{title}
 
+  ul#post-list
+    each post, i in posts
+      li
+        h3= post.title
+        p=  post.post
