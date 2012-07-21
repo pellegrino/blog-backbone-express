@@ -1,4 +1,4 @@
-# Backbone express
+# Blog Backbone express
 
 Simple blog demo to play around with Express.js and Backbone
 
