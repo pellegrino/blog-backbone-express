@@ -18,3 +18,12 @@ exports.index = function(req, res){
 };
 
 
+exports.postsIndex = function(req, res){
+
+  Post.find(function(err, _posts) {
+    if(!err) {
+      res.send(_posts);
+    }
+  });
+};
+
