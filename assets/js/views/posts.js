@@ -4,6 +4,7 @@ BlogApplication.Views.PostItem = Backbone.View.extend({
 
   initialize: function() {
     _.bindAll(this, "render");
+    this.model.on('change', this.render);
   }, 
 
   render: function () {
@@ -19,6 +20,8 @@ BlogApplication.Views.PostsIndex = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render');
     this.collection.on('reset', this.render);
+    this.collection.on('add'  , this.render);
+    this.collection.on('remove', this.render);
   }, 
 
   render: function() {

@@ -34,8 +34,13 @@ app.configure('development', function(){
 });
 
 app.get('/',       routes.index);
-app.get('/posts',  require('./resources/posts').index);
-app.post('/posts', require('./resources/posts').create);
+
+app.get('/posts',       require('./resources/posts').index);
+app.post('/posts',      require('./resources/posts').create);
+
+app.get('/posts/:post', require('./resources/posts').show);
+app.put('/posts/:post', require('./resources/posts').update);
+app.delete('/posts/:post', require('./resources/posts').destroy);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

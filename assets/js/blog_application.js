@@ -4,7 +4,7 @@ window.BlogApplication = {
   Views: {},
   Routers: {},
   initialize: function(data) {
-    new BlogApplication.Routers.Posts();
+    this.postsRouter = new BlogApplication.Routers.Posts();
 
     if (!Backbone.history.started){ 
       Backbone.history.start({pushState: true} );
