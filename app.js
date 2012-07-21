@@ -13,6 +13,7 @@ var express         = require('express')
   , applicationRoot = __dirname;
 
 mongoose.connect(process.env.MONGOHQ_URL || "mongodb://localhost/blogexpress");
+
 var app = express();
 
 app.configure(function(){
@@ -32,8 +33,9 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/',      routes.index);
-app.get('/posts', routes.postsIndex);
+app.get('/',       routes.index);
+app.get('/posts',  require('./resources/posts').index);
+app.post('/posts', require('./resources/posts').create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
